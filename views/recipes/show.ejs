@@ -43,13 +43,15 @@
         <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-edit"
           >Edit Recipe</a
         >
-        <form
-          action="/recipes/<%= recipe._id %>?_method=DELETE"
-          method="POST"
-          class="delete-form"
-        >
-          <button type="submit" class="btn btn-delete">Delete Recipe</button>
-        </form>
+        <div>
+          <form
+            action="/recipes/<%= recipe._id %>?_method=DELETE"
+            method="POST"
+            class="delete-form"
+          >
+            <button type="submit" class="btn btn-delete">Delete Recipe</button>
+          </form>
+        </div>
       </section>
     </main>
   </body>

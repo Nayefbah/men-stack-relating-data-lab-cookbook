@@ -155,11 +155,13 @@ a.btn {
   background-color: #0056b3;
 }
 
-.btn-danger {
+.btn-delete {
   background-color: #dc3545;
+  width: 100%;
+  display: block;
 }
 
-.btn-danger:hover {
+.btn-delete:hover {
   background-color: #c82333;
 }
 
@@ -169,14 +171,6 @@ a.btn {
 
 .btn-edit:hover {
   background-color: #218838;
-}
-
-.btn-delete {
-  background-color: #f44336;
-}
-
-.btn-delete:hover {
-  background-color: #d32f2f;
 }
 
 .ingredient-list,

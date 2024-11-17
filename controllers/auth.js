@@ -15,7 +15,6 @@ router.post('/sign-up', async (req, res) => {
   }
   const hashedPassword = bcrypt.hashSync(req.body.password, 10)
   req.body.password = hashedPassword
-  // save / create the user
   const user = await User.create(req.body)
   res.send(`Thanks for signing up ${user.username}`)
 })
@@ -35,7 +34,6 @@ router.post('/sign-in', async (req, res) => {
     if (!validPassword) {
       return res.send('Login failed. Please try again')
     }
-    // Log the user in
     req.session.user = {
       username: userInDatabase.username,
       _id: userInDatabase._id

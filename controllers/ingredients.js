@@ -13,12 +13,10 @@ router.get('/', async (req, res) => {
   }
 })
 
-// New
 router.get('/new', async (req, res) => {
   res.render('ingredients/new.ejs')
 })
 
-// Create
 router.post('/', async (req, res) => {
   try {
     req.body.owner = req.session.user._id
@@ -35,14 +33,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-// Show
 router.get('/:ingredientId', async (req, res) => {
   try {
     const populatedIngredient = await Ingredient.findById(
       req.params.ingredientId
     ).populate('owner')
 
-    // View Ingredient
     res.render('ingredients/show.ejs', { ingredient: populatedIngredient })
   } catch (err) {
     console.log(err)
@@ -50,7 +46,6 @@ router.get('/:ingredientId', async (req, res) => {
   }
 })
 
-// Edit
 router.get('/:ingredientId/edit', async (req, res) => {
   try {
     const populatedIngredient = await Ingredient.findById(
@@ -63,7 +58,6 @@ router.get('/:ingredientId/edit', async (req, res) => {
   }
 })
 
-// Update
 router.put('/:ingredientId', async (req, res) => {
   try {
     const populatedIngredient = await Ingredient.findById(
@@ -78,7 +72,6 @@ router.put('/:ingredientId', async (req, res) => {
   }
 })
 
-// Delete
 router.delete('/:ingredientId', async (req, res) => {
   try {
     const ingredient = await Ingredient.findById(req.params.ingredientId)

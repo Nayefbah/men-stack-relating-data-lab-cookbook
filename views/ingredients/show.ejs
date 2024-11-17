@@ -8,26 +8,27 @@
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <main class="view-container">
-      <h1><%= ingredient.name %></h1>
-      <p><strong>Owner:</strong> <%= ingredient.owner.username %></p>
-
-      <div class="form-actions">
-        <a
-          href="/ingredients/<%= ingredient._id %>/edit"
-          class="btn btn-primary"
-          >Edit</a
+    <main class="recipe-container">
+      <h1 class="recipe-name"><%= ingredient.name %></h1>
+      <h2 class="recipe-owner">
+        <strong>Owner:</strong> <%= ingredient.owner.username %>
+      </h2>
+      <section class="recipe-actions">
+        <a href="/ingredients/<%= ingredient._id %>/edit" class="btn btn-edit"
+          >Edit Ingredients</a
         >
-
-        <form
-          action="/ingredients/<%= ingredient._id %>?_method=DELETE"
-          method="POST"
-        >
-          <button type="submit" class="btn btn-danger">
-            Delete Ingredient
-          </button>
-        </form>
-      </div>
+        <div>
+          <form
+            action="/ingredients/<%= ingredient._id %>?_method=DELETE"
+            method="POST"
+            class="delete-form"
+          >
+            <button type="submit" class="btn btn-delete">
+              Delete Ingredient
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
   </body>
 </html>

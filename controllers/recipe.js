@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
   }
 })
 
-// New
 router.get('/new', async (req, res) => {
   try {
     const allIngredients = await Ingredient.find()
@@ -25,7 +24,6 @@ router.get('/new', async (req, res) => {
   }
 })
 
-// Create
 router.post('/', async (req, res) => {
   try {
     req.body.owner = req.session.user._id
@@ -37,14 +35,12 @@ router.post('/', async (req, res) => {
   }
 })
 
-// Show
 router.get('/:recipeId', async (req, res) => {
   try {
     const populatedRecipe = await Recipe.findById(req.params.recipeId)
       .populate('owner')
       .populate('ingredients')
 
-    // View recipes
     res.render('recipes/show.ejs', { recipe: populatedRecipe })
   } catch (err) {
     console.log(err)
@@ -52,21 +48,19 @@ router.get('/:recipeId', async (req, res) => {
   }
 })
 
-// Edit
 router.get('/:recipeId/edit', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId).populate(
       'ingredients'
-    ) // Fetch the recipe
-    const ingredients = await Ingredient.find() // Fetch all ingredients
-    res.render('recipes/edit.ejs', { recipe, ingredients }) // Pass both recipe and ingredients
+    )
+    const ingredients = await Ingredient.find()
+    res.render('recipes/edit.ejs', { recipe, ingredients })
   } catch (err) {
     console.log(err)
     res.redirect('/')
   }
 })
 
-// Update
 router.put('/:recipeId', async (req, res) => {
   try {
     const populatedRecipe = await Recipe.findById(req.params.recipeId).populate(
@@ -81,7 +75,6 @@ router.put('/:recipeId', async (req, res) => {
   }
 })
 
-// Delete
 router.delete('/:recipeId', async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.recipeId)
