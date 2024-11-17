@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Style/style.css" />
+    <title>Ingredients Inventory</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <main class="content-container">
+      <h1>Ingredients Inventory</h1>
+      <p>Select an ingredient to view, update, or delete.</p>
+
+      <div class="btn btn-primary">
+        <a href="/ingredients/new">Add new</a>
+      </div>
+
+      <div class="ingredient-list">
+        <% ingredients.forEach((ingredient) => { %>
+        <div class="ingredient-item">
+          <a href="/ingredients/<%= ingredient._id %>" class="ingredient-link">
+            <p class="ingredient-name"><%= ingredient.name %></p>
+          </a>
+          <p class="ingredient-owner">
+            Owner: <%= ingredient.owner.username %>
+          </p>
+        </div>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>

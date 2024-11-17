@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Style/style.css" />
+    <title><%= ingredient.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <main class="view-container">
+      <h1><%= ingredient.name %></h1>
+      <p><strong>Owner:</strong> <%= ingredient.owner.username %></p>
+
+      <div class="form-actions">
+        <a
+          href="/ingredients/<%= ingredient._id %>/edit"
+          class="btn btn-primary"
+          >Edit</a
+        >
+
+        <form
+          action="/ingredients/<%= ingredient._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit" class="btn btn-danger">
+            Delete Ingredient
+          </button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

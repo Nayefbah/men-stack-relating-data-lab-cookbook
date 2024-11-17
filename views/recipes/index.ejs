@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Style/style.css" />
+    <title>All Recipes</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <main class="content-container">
+      <h1>All Recipes</h1>
+      <p>Select recipe to view, update, or delete.</p>
+      <div class="btn btn-primary">
+        <a href="/recipes/new">Add New</a>
+      </div>
+      <div class="ingredient-list">
+        <% recipes.forEach((recipe) => { %>
+        <div class="ingredient-item">
+          <a href="/recipes/<%= recipe._id %>">
+            <p class="ingredient-name"><%= recipe.name %></p>
+          </a>
+          <p class="ingredient-owner">Owner: <%= recipe.owner.username %></p>
+        </div>
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>
